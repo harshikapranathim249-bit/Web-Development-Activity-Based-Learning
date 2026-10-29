@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Future College</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #26344a;
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+section {
+    scroll-margin-top: 90px;
+}
+
+/* Navigation Bar */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #172d50;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.logo small {
+    display: block;
+    color: #64748b;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-top: 4px;
+}
+
+.logo-icon {
+    width: 44px;
+    height: 44px;
+    background-color: #1e4e8c;
+    color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #35445b;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #2875c7;
+}
+
+.nav-button {
+    background-color: #1e4e8c;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nav-button:hover,
+.primary:hover {
+    background-color: #153963;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 70px max(6%, calc((100% - 1200px) / 2));
+    background:
+        linear-gradient(90deg, rgba(12, 30, 55, 0.94), rgba(12, 30, 55, 0.55)),
+        url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1800&q=85");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 690px;
+}
+.tagline,
+.section-label {
+    color: #2875c7;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.tagline {
+    color: #a9d4ff;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    color: #e1e8f1;
+    font-size: 17px;
+    max-width: 570px;
+    margin-bottom: 30px;
+}
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.button {
+    display: inline-block;
+    padding: 13px 22px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.primary {
+    background-color: #2875c7;
+    color: #ffffff;
+}
+.secondary {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Highlights */
+.highlights {
+    max-width: 1100px;
+    margin: -1px auto 0;
+    padding: 35px 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.highlight h2 {
+    color: #1e4e8c;
+    font-size: 32px;
+    margin-bottom: 4px;
+}
+.highlight p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Common Section Styles */
+.section {
+    padding: 85px 24px;
+}
+
+.about,
+.section-heading,
+.course-grid,
+.facility-grid,
+.announcement-list,
+.contact-grid {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 42px;
+}
+.section-heading h2,
+.about-content h2,
+.admissions h2 {
+    font-size: clamp(27px, 3vw, 36px);
+    line-height: 1.25;
+    color: #172d50;
+    margin-bottom: 15px;
+}
+
+.section-heading > p:last-child {
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* About Section */
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.about-image img {
+     width: 100%;
+    height: 370px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+.about-content > p:not(.section-label) {
+    color: #64748b;
+    margin-bottom: 16px;
+    font-size: 15px;
+}
+
+.about-content .button {
+    margin-top: 10px;
+}
+
+/* Courses */
+.courses {
+    background-color: #f4f7fb;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.course-card {
+    padding: 30px 25px;
+      background-color: #ffffff;
+    border: 1px solid #e7edf5;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.course-card:hover,
+.facility-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(29, 65, 110, 0.1);
+}
+
+.course-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eaf3ff;
+    border-radius: 12px;
+    font-size: 28px;
+    margin-bottom: 22px;
+}
+
+.course-card h3,
+.facility-card h3 {
+     color: #172d50;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.course-card p,
+.facility-card p {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.course-card a {
+    color: #2875c7;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Facilities */
+.facility-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.facility-card {
+     padding: 25px 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #e7edf5;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.facility-icon {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.facility-card p {
+    margin-bottom: 0;
+}
+
+/* Announcements */
+.announcements {
+    background-color: #f4f7fb;
+}
+
+.announcement-list {
+    display: grid;
+    gap: 16px;
+    }
+
+.announcement {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 22px 25px;
+    background-color: #ffffff;
+    border: 1px solid #e7edf5;
+    border-radius: 8px;
+}
+
+.announcement-date {
+    min-width: 100px;
+    text-align: center;
+    background-color: #eaf3ff;
+    color: #1e4e8c;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.announcement h3 {
+    color: #172d50;
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+.announcement p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Admissions Banner */
+.admissions {
+    background: linear-gradient(120deg, #17365f, #2875c7);
+    color: #ffffff;
+    padding: 60px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.light-label {
+    color: #b9dcff;
+}
+
+.admissions h2 {
+    color: #ffffff;
+}
+
+.admissions p:not(.section-label) {
+    color: #e1eaf7;
+      font-size: 15px;
+}
+
+.admission-button {
+    background-color: #ffffff;
+    color: #1e4e8c;
+    white-space: nowrap;
+}
+
+.admission-button:hover {
+    background-color: #eaf3ff;
+}
+
+/* Contact */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.contact-card {
+    padding: 25px 15px;
+    text-align: center;
+    border: 1px solid #e7edf5;
+    border-radius: 10px;
+}
+.contact-card span {
+    font-size: 28px;
+}
+
+.contact-card h3 {
+    color: #172d50;
+    margin: 12px 0 5px;
+}
+
+.contact-card p {
+    color: #64748b;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+/* Footer */
+footer {
+    background-color: #10233e;
+    color: #d8e2ef;
+    padding: 35px 24px 0;
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+.footer-logo {
+    color: #ffffff;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.footer-logo small {
+    color: #b8c7d9;
+}
+
+.footer-content > p {
+    font-size: 14px;
+    color: #b8c7d9;
+    margin-bottom: 30px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #30435d;
+    padding: 18px 0;
+    text-align: center;
+    font-size: 12px;
+    color: #b8c7d9;
+}
+/* Responsive Design */
+@media (max-width: 900px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .about {
+        gap: 30px;
+    }
+
+    .facility-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        padding: 14px 16px;
+        gap: 14px;
+    }
+      .logo {
+        font-size: 15px;
+    }
+
+    .logo-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .nav-button {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    .nav-links {
+        gap: 12px 18px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .hero {
+        min-height: 470px;
+        padding: 55px 24px;
+    }
+  .hero-description {
+        font-size: 15px;
+    }
+
+    .highlights {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 15px;
+        padding: 30px 18px;
+    }
+
+    .highlight h2 {
+        font-size: 27px;
+    }
+
+    .section {
+        padding: 60px 20px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image img {
+        height: 260px;
+    }
+  .course-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .facility-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .facility-card {
+        padding: 20px 12px;
+    }
+
+    .announcement {
+        align-items: flex-start;
+        gap: 14px;
+        padding: 18px 14px;
+    }
+
+    .announcement-date {
+        min-width: 78px;
+        font-size: 10px;
+    }
+
+    .admissions {
+         padding: 45px 24px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 380px) {
+    .logo {
+        gap: 6px;
+        font-size: 13px;
+    }
+
+    .nav-button {
+        padding: 8px;
+    }
+
+    .facility-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons .button {
+        padding: 12px 15px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <a href="#home" class="logo">
+                <span class="logo-icon">BF</span>
+                <span>Bright Future <small>COLLEGE</small></span>
+            </a>
+ <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <a href="#admissions" class="nav-button">Apply Now</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="tagline">LEARN TODAY, LEAD TOMORROW</p>
+            <h1>Build Your Future<br>With Quality Education</h1>
+            <p class="hero-description">
+                Discover your potential, develop new skills, and prepare
+                for a successful career at Bright Future College.
+            </p>
+
+            <div class="hero-buttons">
+                 <a href="#courses" class="button primary">Explore Courses</a>
+                <a href="#about" class="button secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="highlights">
+        <div class="highlight">
+            <h2>20+</h2>
+            <p>Years of Excellence</p>
+        </div>
+        <div class="highlight">
+            <h2>15+</h2>
+            <p>Academic Programs</p>
+        </div>
+        <div class="highlight">
+            <h2>50+</h2>
+            <p>Expert Faculty</p>
+        </div>
+        <div class="highlight">
+            <h2>5000+</h2>
+            <p>Students and Alumni</p>
+        </div>
+    </section>
+  <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="about-image">
+            <img
+                src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=80"
+                alt="College campus building">
+        </div>
+
+        <div class="about-content">
+            <p class="section-label">ABOUT OUR COLLEGE</p>
+            <h2>Education That Inspires Excellence</h2>
+            <p>
+                Bright Future College is a sample educational institution
+                committed to academic excellence, creativity, and
+                personal development.
+            </p>
+            <p>
+                We provide a supportive learning environment where
+                students can explore their interests, gain practical
+                knowledge, and prepare for future opportunities.
+            </p>
+            <a href="#contact" class="button primary">Know More</a>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+       <section class="section courses" id="courses">
+        <div class="section-heading">
+            <p class="section-label">OUR ACADEMICS</p>
+            <h2>Explore Our Popular Courses</h2>
+            <p>Choose a program that matches your interests and ambitions.</p>
+        </div>
+
+        <div class="course-grid">
+            <article class="course-card">
+                <div class="course-icon">💻</div>
+                <h3>Computer Science</h3>
+                <p>Learn programming, software development, and modern technology.</p>
+                <a href="#admissions">Explore Course →</a>
+            </article>
+
+            <article class="course-card">
+                <div class="course-icon">📊</div>
+                <h3>Business Studies</h3>
+                <p>Develop skills in management, finance, and entrepreneurship.</p>
+                <a href="#admissions">Explore Course →</a>
+            </article>
+  <article class="course-card">
+                <div class="course-icon">🔬</div>
+                <h3>Science</h3>
+                <p>Build a strong foundation through scientific learning and research.</p>
+                <a href="#admissions">Explore Course →</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="section facilities" id="facilities">
+        <div class="section-heading">
+            <p class="section-label">CAMPUS LIFE</p>
+            <h2>Facilities for Every Student</h2>
+            <p>A welcoming campus designed to support learning and growth.</p>
+        </div>
+
+        <div class="facility-grid">
+            <div class="facility-card">
+                <div class="facility-icon">
+                    <img src="https://i.pinimg.com/1200x/79/1b/90/791b90fada00ceef89eff9de3a679577.jpg">
+                </div>
+                <h3>Digital Library</h3>
+                <p>Books, study materials, and learning resources.</p>
+            </div>
+
+            <div class="facility-card">
+                 <div class="facility-icon">
+                    <img src="https://i.pinimg.com/1200x/c3/5a/7d/c35a7dba4b3301145139d8f82aea09be.jpg">
+                 </div>
+                <h3>Modern Laboratories</h3>
+                <p>Practical learning with laboratory facilities.</p>
+            </div>
+
+            <div class="facility-card">
+                <div class="facility-icon">
+                    <img src="https://i.pinimg.com/1200x/c5/e9/6a/c5e96acf6632591428475d2a2c8afed0.jpg">
+                </div>
+                <h3>Sports and Activities</h3>
+                <p>Opportunities to develop teamwork and leadership.</p>
+            </div>
+
+            <div class="facility-card">
+                <div class="facility-icon">
+                    <img src="https://i.pinimg.com/1200x/a2/52/49/a25249ac4927921d690150becf43eb1d.jpg">
+                </div>
+                <h3>Transport</h3>
+                <p>Convenient transport information for students.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section class="section announcements">
+        <div class="section-heading">
+            <p class="section-label">STAY INFORMED</p>
+            <h2>Latest Announcements</h2>
+        </div>
+  <div class="announcement-list">
+            <div class="announcement">
+                <span class="announcement-date">NOTICE 01</span>
+                <div>
+                    <h3>Admissions Open</h3>
+                    <p>Explore available programs and admission requirements.</p>
+                </div>
+            </div>
+
+            <div class="announcement">
+                <span class="announcement-date">NOTICE 02</span>
+                <div>
+                    <h3>Campus Orientation</h3>
+                    <p>New students can check with the college office for details.</p>
+                </div>
+            </div>
+
+            <div class="announcement">
+                <span class="announcement-date">NOTICE 03</span>
+                <div>
+                    <h3>Upcoming Campus Events</h3>
+                    <p>Watch this section for academic and extracurricular updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+  <!-- Admissions Section -->
+    <section class="admissions" id="admissions">
+        <div>
+            <p class="section-label light-label">YOUR JOURNEY STARTS HERE</p>
+            <h2>Ready to Take the Next Step?</h2>
+            <p>Explore our courses and contact the college to learn about admissions.</p>
+        </div>
+        <a href="#contact" class="button admission-button">Admission Enquiry</a>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="section-heading">
+            <p class="section-label">GET IN TOUCH</p>
+            <h2>Contact Our College</h2>
+            <p>Reach out to us for course and admission information.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <span>📍</span>
+                <h3>Address</h3>
+                <p>Bright future college,1400 R St,Lincoln , USA</p>
+            </div>
+            <div class="contact-card">
+                <span>📞</span>
+                <h3>Phone</h3>
+                <p>+91 98765 43210</p>
+            </div>
+
+            <div class="contact-card">
+                <span>✉️</span>
+                <h3>Email</h3>
+                <p>info@brightfuture.example</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="#home" class="logo footer-logo">
+                <span class="logo-icon">BF</span>
+                <span>Bright Future <small>COLLEGE</small></span>
+            </a>
+            <p>Empowering students through knowledge and opportunity.</p>
+        </div>
+          <div class="footer-bottom">
+            <p>&copy; 2026 Bright Future College. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
