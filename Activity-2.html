@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase | Online Shopping</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f8fc;
+    color: #24263a;
+    line-height: 1.6;
+}
+
+/* Navigation bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 7%;
+    background: white;
+    box-shadow: 0 2px 12px #0000000a;
+    flex-wrap: wrap;
+    }
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #24263a;
+    text-decoration: none;
+}
+
+.logo span,
+.footer span {
+    color: #635bff;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.navbar nav a {
+    color: #505166;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.navbar nav a:hover {
+     color: #635bff;
+}
+
+.cart-link,
+.primary-button {
+    display: inline-block;
+    background: #635bff;
+    color: white;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.cart-link:hover,
+.primary-button:hover {
+    background: #4d45df;
+}
+
+/* Hero banner */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+    margin: 30px 7%;
+    padding: 40px;
+    border-radius: 20px;
+    background: linear-gradient(120deg, #e9e8ff, #f7efff);
+}
+
+.hero-content {
+     flex: 1;
+}
+
+.tagline {
+    color: #635bff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 4vw, 50px);
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+.hero-description {
+    color: #6c6e81;
+    max-width: 430px;
+    margin-bottom: 25px;
+}
+.hero-image {
+    flex: 1;
+    min-width: 0;
+}
+
+.hero-image img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Search section */
+.search-section {
+    padding: 10px 7% 20px;
+}
+
+.search-section form,
+.newsletter form {
+    display: flex;
+    max-width: 650px;
+    margin: auto;
+}
+.search-section input,
+.newsletter input {
+    flex: 1;
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid #dedfea;
+    border-radius: 8px 0 0 8px;
+    outline-color: #635bff;
+}
+
+.search-section button,
+.newsletter button {
+    border: none;
+    padding: 14px 22px;
+    background: #635bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+}
+
+.search-section button:hover,
+.newsletter button:hover {
+    background: #4d45df;
+}
+/* Section headings */
+.section {
+    padding: 35px 7%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.section-heading h2,
+.offer-section h2,
+.newsletter h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.section-heading > p:last-child,
+.offer-section > p:not(.tagline),
+.newsletter p {
+    color: #77798c;
+}
+/* Categories */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.category-card {
+    background: white;
+    padding: 12px;
+    border: 1px solid #ececf3;
+    border-radius: 14px;
+    text-align: center;
+    text-decoration: none;
+    color: #24263a;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px #24263a12;
+}
+.category-card img {
+    width: 100%;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.category-card h3 {
+    margin-top: 8px;
+    font-size: 17px;
+}
+
+/* Product grid */
+.products-section {
+    padding-top: 45px;
+    padding-bottom: 60px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+.product-card {
+    background: white;
+    border: 1px solid #ececf3;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px #24263a12;
+}
+
+.product-image {
+    position: relative;
+    background: #f0f0f7;
+}
+
+.product-image img {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+.discount {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #e7f8ee;
+    color: #17834b;
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.product-info {
+    padding: 17px;
+}
+
+.category-label {
+    color: #635bff;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-info h3 {
+     font-size: 19px;
+    margin-bottom: 7px;
+}
+
+.rating {
+    color: #e49a14;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.rating span {
+    color: #88899a;
+    font-size: 12px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 14px;
+}
+.price del {
+    color: #9294a4;
+    font-size: 13px;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.product-button {
+    display: block;
+    padding: 11px;
+    border-radius: 8px;
+    background: #24263a;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.product-button:hover {
+    background: #635bff;
+}
+
+/* Promotional section */
+.offer-section {
+    margin: 0 7% 45px;
+    padding: 45px 20px;
+    text-align: center;
+    border-radius: 18px;
+    background: linear-gradient(120deg, #e9e8ff, #f7efff);
+}
+
+.offer-section > p:not(.tagline) {
+    margin: 10px 0 22px;
+}
+
+/* Newsletter */
+.newsletter {
+    text-align: center;
+    padding: 35px 7% 50px;
+}
+
+.newsletter p {
+    margin-bottom: 20px;
+}
+
+.newsletter form {
+    max-width: 500px;
+}
+
+/* Footer */
+.footer {
+    background: #24263a;
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+}
+
+.footer p {
+    color: #c6c7d5;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+/* Tablet screens */
+@media (max-width: 900px) {
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    .navbar nav {
+        gap: 12px;
+    }
+
+    .hero {
+        margin: 25px 5%;
+        padding: 28px;
+    }
+  .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+    .navbar {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .navbar nav {
+        justify-content: center;
+        width: 100%;
+    }
+  .hero {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px;
+    }
+
+    .hero-image img {
+        height: 220px;
+    }
+
+    .search-section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .section-heading h2,
+    .offer-section h2,
+    .newsletter h2 {
+        font-size: 25px;
+    }
+
+    .category-grid {
+        gap: 12px;
+    }
+ .category-card img {
+        height: 115px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .product-image img {
+        height: 240px;
+    }
+
+    .offer-section {
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 35px 18px;
+    }
+
+    .newsletter {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <a href="#" class="logo">Shop<span>Ease.</span></a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#products">Products</a>
+            <a href="#offers">Offers</a>
+        </nav>
+
+        <a href="#products" class="cart-link">🛍️ My Shopping</a>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <p class="tagline">YOUR STYLE, YOUR CHOICE</p>
+                <h1>Discover Products<br>You Will Love.</h1>
+                <p class="hero-description">
+                    Explore a world of quality products at
+                    prices you'll love. Find your next favorite today.
+                </p>
+                <a href="#products" class="primary-button">Shop Now →</a>
+            </div>
+
+            <div class="hero-image">
+                <img
+                    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900"
+                    alt="Modern clothing and shopping store">
+            </div>
+             </section>
+
+        <!-- Search Bar Design -->
+        <section class="search-section">
+            <form action="#products" method="get">
+                <input
+                    type="search"
+                    name="search"
+                    placeholder="Search for products, brands and more..."
+                    aria-label="Search products">
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <!-- Product Categories -->
+        <section class="section" id="categories">
+            <div class="section-heading">
+                <p class="tagline">SHOP BY CATEGORY</p>
+                <h2>Explore Our Categories</h2>
+                <p>Find everything you need in one place.</p>
+            </div>
+
+            <div class="category-grid">
+                <a href="#products" class="category-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"
+                          alt="Shoes">
+                    <h3>Footwear</h3>
+                </a>
+
+                <a href="#products" class="category-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"
+                        alt="Clothing">
+                    <h3>Fashion</h3>
+                </a>
+
+                <a href="#products" class="category-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"
+                        alt="Smart watch">
+                    <h3>Electronics</h3>
+                </a>
+
+                <a href="#products" class="category-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400"
+                        alt="Backpack">
+                    <h3>Accessories</h3>
+                    </a>
+            </div>
+        </section>
+
+        <!-- Popular Products -->
+        <section class="section products-section" id="products">
+            <div class="section-heading">
+                <p class="tagline">OUR COLLECTION</p>
+                <h2>Popular Products</h2>
+                <p>Discover our customer favorites.</p>
+            </div>
+
+            <div class="product-grid">
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <span class="discount">25% OFF</span>
+                        <img
+                            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+                            alt="Red sports sneakers">
+                    </div>
+                    <div class="product-info">
+                         <p class="category-label">Footwear</p>
+                        <h3>Sports Sneakers</h3>
+                        <p class="rating">★ 4.7 <span>(120 reviews)</span></p>
+                        <p class="price">₹1,499 <del>₹1,999</del></p>
+                        <a href="#offers" class="product-button">View Product</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <span class="discount">20% OFF</span>
+                        <img
+                            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500"
+                            alt="Casual T-shirt">
+                    </div>
+                    <div class="product-info">
+                         <p class="category-label">Fashion</p>
+                        <h3>Casual T-Shirt</h3>
+                        <p class="rating">★ 4.5 <span>(85 reviews)</span></p>
+                        <p class="price">₹799 <del>₹999</del></p>
+                        <a href="#offers" class="product-button">View Product</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <span class="discount">23% OFF</span>
+                        <img
+                            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"
+                            alt="Modern wristwatch">
+                    </div>
+                    <div class="product-info">
+                        <p class="category-label">Electronics</p>
+                        <h3>Smart Watch</h3>
+                        <p class="rating">★ 4.6 <span>(96 reviews)</span></p>
+                        <p class="price">₹2,299 <del>₹2,999</del></p>
+                        <a href="#offers" class="product-button">View Product</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <span class="discount">29% OFF</span>
+                        <img
+                            src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500"
+                            alt="Travel backpack">
+                    </div>
+                    <div class="product-info">
+                        <p class="category-label">Accessories</p>
+                        <h3>Travel Backpack</h3>
+                          <p class="rating">★ 4.4 <span>(74 reviews)</span></p>
+                        <p class="price">₹999 <del>₹1,399</del></p>
+                        <a href="#offers" class="product-button">View Product</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <span class="discount">15% OFF</span>
+                        <img
+                            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"
+                            alt="Wireless headphones">
+                    </div>
+                    <div class="product-info">
+                        <p class="category-label">Electronics</p>
+                        <h3>Wireless Headphones</h3>
+                        <p class="rating">★ 4.8 <span>(150 reviews)</span></p>
+                        <p class="price">₹1,699 <del>₹1,999</del></p>
+                        <a href="#offers" class="product-button">View Product</a>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image">
+                        <span class="discount">30% OFF</span>
+                        <img
+                            src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500"
+                            alt="Stylish sunglasses">
+                             </div>
+                    <div class="product-info">
+                        <p class="category-label">Accessories</p>
+                        <h3>Stylish Sunglasses</h3>
+                        <p class="rating">★ 4.3 <span>(62 reviews)</span></p>
+                        <p class="price">₹699 <del>₹999</del></p>
+                        <a href="#offers" class="product-button">View Product</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Promotional Offer -->
+        <section class="offer-section" id="offers">
+            <p class="tagline">SPECIAL COLLECTION</p>
+            <h2>Upgrade Your Everyday Style</h2>
+            <p>Explore great finds for your everyday needs.</p>
+            <a href="#products" class="primary-button">Explore Products</a>
+        </section>
+ <!-- Newsletter Design -->
+        <section class="newsletter">
+            <h2>Stay Updated!</h2>
+            <p>Discover new arrivals and the latest shopping trends.</p>
+            <form action="#home" method="get">
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    aria-label="Email address"
+                    required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h2>Shop<span>Ease.</span></h2>
+        <p>Your everyday shopping destination.</p>
+        <p>© 2026 ShopEase. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
